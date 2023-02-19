@@ -1,0 +1,1529 @@
+@use "_reset.scss";
+
+
+
+$accent-400:hsl(231, 69%, 60%);
+$accent-500:hsl(0, 94%, 66%);
+
+$primary-400:hsl(229, 31%, 21%);
+$primary-500:hsl(229, 8%, 60%);
+$primary-900:white;
+
+@mixin flexRow(){
+    display: flex;
+    flex-direction: row;
+}
+@mixin flexCol(){
+    display: flex;
+    flex-direction: column;
+}
+@mixin mg-inl(){
+    margin-inline: auto;
+}
+@mixin mg-blk(){
+    margin-block: auto;
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+}
+
+
+
+main,footer,header{
+    margin-inline: 5vw;
+}
+//////////////////////////////////////////////HEADER/////////////////////////////
+header{
+    @include flexRow();
+    justify-content: space-between;
+    padding-block: 2rem;
+}
+
+.primaryNavList{
+    
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($primary-400 , $alpha: .9);
+    position: fixed;
+    inset: 0;
+    @include flexCol();
+    align-items: center;
+    list-style: none;
+    padding-block: 0;
+    margin-block: 0;
+    padding-inline: 0;
+    transition: 500ms ease-in;
+    li{
+        @include mg-inl();
+        width: 90%;
+        padding-block: 1rem;
+        text-align: center;
+        border-bottom: 1px solid $primary-500;
+        a{
+            color: $primary-900;
+            text-decoration: none;
+            font-weight: 100;
+            text-transform: uppercase;
+            
+        }
+    }
+    li:first-of-type{
+        border-top:1px solid $primary-500 ;
+    }
+}
+.loginButton{
+    
+    border: 1px solid $primary-900;
+    background: transparent;
+    width: 90%;
+    padding: 0.5em 2em;
+    margin-block:1rem ;
+    a{
+        color: $primary-900;
+        text-transform: uppercase;
+        text-decoration: none;
+        
+        font-size: clamp(0.7rem, 6vw, 2rem);
+    }
+}
+
+.navSocials{
+    @include flexRow();
+    margin-top: auto;
+    margin-bottom: 5vh;
+    gap: 2rem;
+}
+.hamburgerButton{
+    border: 0;
+    background: transparent;
+}
+
+.topOfList{
+    @include flexRow();
+    @include mg-inl();
+    justify-content: space-between;
+    width: 90%;
+    padding-block: 2rem;
+    
+    button{
+        border: 0;
+        background: transparent;
+    }
+}
+
+
+.navClosed{
+    transform: translateY(-100vh);
+    transition: 500ms ease-in;
+}
+
+@media only screen and (min-width:450px) and (max-width:700px){
+    .logo{
+        width: 30vw;
+    }
+    .hamburgerIcon{
+        width: 4vw;
+    }
+}
+
+@media only screen and (min-width:700px) and (max-width:1024px){
+    .logo{
+        width: 30vw;
+    }
+    .hamburgerIcon{
+        width: 4vw;
+    }
+    .primaryNavList{
+        li{
+            a{
+                font-size: clamp(1rem, 4vw, 2rem);
+            }
+        }
+    }
+   
+    .loginButton{
+        font-size: clamp(1rem, 4vw, 2rem);
+    }
+    .closeButton{
+        img{
+            width: 4vw;
+        }
+        
+    }
+    .navSocials{
+        img{
+            width: 4vw;
+        }
+    }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1440px){
+    header{
+        justify-content: space-between;
+    }
+    .hamburgerButton{
+        display: none;
+    }
+    .primaryNavList{
+        position: relative;
+        @include flexRow();
+        width: fit-content;
+        height: fit-content;
+        inset: 0;
+        background: transparent;
+        gap: 2rem;
+        li{
+            border: 0;
+            a{
+                color: $primary-400;
+                font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+                &:hover,
+                &:focus-within{
+                    color: $accent-500;
+                    cursor: pointer;
+                }
+            }
+        }
+        li:first-of-type{
+            border: 0;
+        }
+    }
+    .loginButton{
+        background-color: $accent-500;
+        border-radius: 10px;
+        padding: 0.25em 1.5em;
+        &:hover,
+        &:focus-within{
+            background-color: $primary-900;
+            border: 1px solid $accent-500;
+            cursor: pointer;
+            a{
+                color: $accent-500;
+            }
+        }
+        a{
+            color: $primary-900;
+            font-size: clamp(0.7rem, 2vw, 1.5rem);
+        }
+    }
+    .topOfList, 
+    .navSocials{
+        display: none   ;
+    }
+    .navClosed{
+        transform: none;
+    }
+    .logo{
+        object-fit:contain;
+        width: 20vw;
+    }
+}
+@media only screen and (min-width:1440px){
+    header{
+        justify-content: space-between;
+    }
+    .hamburgerButton{
+        display: none;
+    }
+    
+    .primaryNavList{
+        position: relative;
+        @include flexRow();
+        width: fit-content;
+        height: fit-content;
+        inset: 0;
+        background: transparent;
+        gap: 2rem;
+        li{
+            border: 0;
+            a{
+                color: $primary-400;
+                font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+                &:hover,
+                &:focus-within{
+                    color: $accent-500;
+                    cursor: pointer;
+                }
+            }
+        }
+        li:first-of-type{
+            border: 0;
+        }
+    }
+    .loginButton{
+        background-color: $accent-500;
+        border-radius: 10px;
+        padding: 0.25em 1.5em;
+        &:hover,
+        &:focus-within{
+            background-color: $primary-900;
+            border: 1px solid $accent-500;
+            cursor: pointer;
+            a{
+                color: $accent-500;
+            }
+        }
+        a{
+            color: $primary-900;
+            font-size: clamp(0.7rem, 2vw, 1.5rem);
+        }
+    }
+    .topOfList, 
+    .navSocials{
+        display: none   ;
+    }
+    .navClosed{
+        transform: none;
+    }
+    .logo{
+        object-fit:contain;
+        width: 15vw;
+    }
+}
+
+///////////////////////////////////////////HERO//////////////////////////////////
+
+.heroImageWrapper{
+    background-image: url(images/FEMk.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    min-height: 30vh;
+}
+
+.heroText{
+    text-align: center;
+}
+
+.heroTextInside{
+    h1{
+        font-size: clamp(1rem, 9vw, 2rem);
+        font-weight: 400;
+    }
+    p{
+        @include mg-inl();
+        font-size: clamp(0.7rem, 4vw, 2rem);
+        line-height: 2;
+        max-width: 30ch;
+        color: $primary-500;
+        font-weight: 400;
+        padding-block: 1rem;
+    }
+    
+}
+
+.heroButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    button{
+        border: 0;
+        border-radius: 5px;
+        padding: 0.5em 1em;
+        font-size: clamp(0.5rem, 4.3vw, 2rem);
+        background-color:$primary-900;
+        box-shadow:0px 0px 10px 2px rgba(0, 0, 0, 0.11);        
+        a{
+            text-decoration: none;
+            color: $primary-400;
+        }
+    }
+    .alternative{
+        background-color: $accent-400;
+        a{
+            color:$primary-900;
+        }
+    }
+}
+
+@media only screen and (min-width:450px) and (max-width:1024px){
+    .heroImageWrapper{
+        background-image: none;
+        img{
+            @include mg-inl();
+            width: 80vw;
+        }
+    }
+    .heroTextInside{
+        h1{
+            font-size: clamp(1rem, 6vw, 3rem)
+        }
+        p{
+            font-size: clamp(1rem, 3vw, 1.5rem)
+        }
+    }
+    .heroButtons{
+        justify-content: center;
+        gap: 2rem;
+        a{
+            font-size: clamp(1rem, 3vw, 1.5rem)
+        }
+    }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1440px){
+    .heroSection{
+       display: flex;
+       flex-direction: row-reverse;
+       padding-block: 5rem;
+    }
+
+    .heroImageWrapper{
+        background-image: none;
+        @include mg-blk();
+        width: 60%;
+        img{
+            @include mg-blk();
+        }
+    }
+    .heroText{
+        @include mg-blk();
+    }
+    .heroTextInside{
+        text-align: left;
+        @include mg-blk();
+        h1{
+            font-size: clamp(1rem, 4vw, 3rem);
+            max-width: 20ch;
+        }
+        p{
+            font-size: clamp(0.5rem, 1.5vw, 1.2rem);
+            margin:0;
+        }
+    }
+    .heroButtons{
+        justify-content: left;
+        gap: 2rem;
+        button:not(.alternative){
+            &:hover,
+            &:focus-within{
+                background-color: $primary-900;
+                outline: 2px solid $primary-400;
+                cursor: pointer;
+                a{
+                    color: $primary-400;
+                }
+            }
+            font-size: clamp(0.7rem, 1.5vw, 1.5rem)
+        }
+        .alternative{
+            &:hover,
+            &:focus-within{
+                background-color: $primary-900;
+                outline: 2px solid $accent-400;
+                cursor: pointer;
+                a{
+                    color: $accent-400
+                }
+            }
+            font-size: clamp(0.7rem, 1.5vw, 1.5rem)
+        }
+    }
+}
+@media only screen and (min-width:1440px){
+    .heroSection{
+        display: flex;
+        flex-direction: row-reverse;
+        padding-block: 5rem;
+     }
+ 
+     .heroImageWrapper{
+         background-image: none;
+         @include mg-blk();
+            width: 50%;
+         img{
+             @include mg-blk();
+             width: 100%;
+         }
+     }
+     .heroText{
+         @include mg-blk();
+         margin-inline: auto;
+        
+     }
+     .heroTextInside{
+         text-align: left;
+         @include mg-blk();
+         h1{
+             font-size: clamp(1rem, 4vw, 3rem);
+             max-width: 20ch;
+         }
+         p{
+             font-size: clamp(0.5rem, 1.5vw, 1.2rem);
+             margin:0;
+         }
+     }
+     .heroButtons{
+         justify-content: left;
+         gap: 2rem;
+         button:not(.alternative){
+             &:hover,
+             &:focus-within{
+                 background-color: $primary-900;
+                 outline: 2px solid $primary-400;
+                 cursor: pointer;
+                 a{
+                     color: $primary-400;
+                 }
+             }
+             font-size: clamp(0.7rem, 1.5vw, 1.5rem)
+         }
+         .alternative{
+             &:hover,
+             &:focus-within{
+                 background-color: $primary-900;
+                 outline: 2px solid $accent-400;
+                 cursor: pointer;
+                 a{
+                     color: $accent-400
+                 }
+             }
+             font-size: clamp(0.7rem, 1.5vw, 1.5rem)
+         }
+     }
+
+
+}
+
+///////////////////////////////////////FEATURES///////
+.featuresSection{
+    @include flexCol();
+    text-align: center;
+    padding-block: 5rem;
+}
+
+.featuresIntro{
+    h2{
+        font-weight: 400;
+        font-size: clamp(1rem, 8vw, 4rem);
+    }
+    p{
+        color: $primary-500;
+        line-height: 2;
+        font-size: clamp(0.7rem, 4vw, 2rem);
+        padding-block: 1rem;
+    }
+}
+
+.featuresButtons{
+    @include flexCol();
+    
+    padding-block-end:3rem ;
+    button{
+        border: 0;
+        background: transparent;
+        color: $primary-500;
+        padding-block: 1rem;
+        border-bottom: 1px solid $primary-500;
+    }
+    button:first-of-type{
+        border-top: 1px solid $primary-500;
+    }
+}
+
+
+.featureContent{
+    @include flexCol();
+
+}
+.featuresText{
+    padding-block: 2rem;
+    button{
+        display: none;
+    }
+}
+.feature{
+    h2{
+        font-size: clamp(1rem, 7vw, 2rem);
+        font-weight: 400;
+    }
+    p{
+        color: $primary-500;
+        font-size: clamp(0.7rem, 4vw, 2rem);
+        padding-block: 1rem;
+    }
+}
+.chosenFeature{
+    position: relative;
+}
+
+.chosenFeature::after{
+    content: '';
+    position: relative;
+    display: block;
+    width: 50%;
+    height: 4px;
+    background-color: $accent-500 ;
+    bottom: -1rem;
+    left: 25%;
+}
+.featureHidden{
+    display: none;
+}
+
+
+.chosenFeature{
+    color: $primary-400 !important;
+    
+}
+
+@media only screen and (min-width:450px) and (max-width:700px){
+    .featuresIntro{
+        h2{
+            font-size: clamp(1rem, 6vw, 2rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 3vw, 1rem);
+            max-width: 35ch;
+        }
+    }
+    .featuresButtons{
+        padding-block: 1rem;
+        button{
+            padding-block: 1rem;
+            font-size: clamp(1rem, 3vw, 1.5rem)
+        }
+    }
+    .featuresImage{
+        @include mg-inl();
+        width: 70vw;
+        margin-block: 1rem;
+    }
+    .feature{
+        h2{
+            font-size: clamp(1rem, 6vw, 2rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 3vw, 1rem);
+            max-width: 35ch;
+        }
+    }
+
+}
+@media only screen and (min-width:700px) and (max-width:1024px){
+    .featuresIntro{
+        h2{
+            font-size: clamp(1rem, 5vw, 3rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(1rem, 2vw, 2rem);
+            max-width: 35ch;
+        }
+    }
+    .featuresButtons{
+        @include flexRow();
+        @include mg-inl();
+        button{
+            flex-basis: 33%;
+            font-size: clamp(1rem, 2.5vw, 2rem);
+        }
+        button:first-of-type{
+            border-top: none;
+        }
+    }
+
+    .chosenFeature::after{
+        width: 100%;
+        left: 0
+    }
+
+    .featuresImage{
+        @include mg-inl();
+    }
+    .feature{
+        h2{
+            font-size: clamp(1rem, 4vw, 3rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(1rem, 3vw, 2rem);
+            max-width: 35ch;
+        }
+    }
+}
+@media only screen and (min-width:1024px) and (max-width:1440px){
+    .featuresIntro{
+        h2{
+            font-size: clamp(1rem, 5vw, 4rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            max-width: 35ch;
+            font-weight: 400;
+        }
+    }
+    .featuresButtons{
+        @include flexRow();
+        @include mg-inl();
+        max-width: 1000px;
+        button{
+            &:hover,
+            &:focus-within{
+                color: $accent-500;
+                cursor: pointer;
+            }
+            flex-basis: 33%;
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+        }
+        button:first-of-type{
+            border-top: none;
+        }
+    }
+
+    .chosenFeature::after{
+        width: 100%;
+        left: 0
+    }
+    .featuresContent{
+        @include flexRow();
+        button{
+            display: block;
+            border: 0;
+            background-color: $accent-400;
+            border-radius: 5px;
+            padding: 0.5em 1em;
+            
+            a{
+                color: $primary-900;
+                text-decoration: none;
+                font-size: clamp(0.5rem, 1.5vw, 1rem);
+            }
+        }
+    }
+    .featuresImage{
+        @include mg-inl();
+       
+    }
+    .featuresImageWrapper{
+        width: 50%;
+    }
+    .feature{
+    
+        h2{
+            font-size: clamp(1rem, 2.5vw, 2.5rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            max-width: 35ch;
+        }
+    }
+    .featuresText{
+        margin-left: auto;
+        text-align: left
+    }
+}
+@media only screen and (min-width:1440px){
+    .featuresIntro{
+        h2{
+            font-size: clamp(1rem, 4vw, 3rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 1.2vw, 1.5rem);
+            max-width: 50ch;
+            font-weight: 400;
+        }
+    }
+    .featuresButtons{
+        @include flexRow();
+        @include mg-inl();
+        max-width: 1000px;
+        button{
+            &:hover,
+            &:focus-within{
+                color: $accent-500;
+                cursor: pointer;
+            }
+            flex-basis: 33%;
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+        }
+        button:first-of-type{
+            border-top: none;
+        }
+    }
+
+    .chosenFeature::after{
+        width: 100%;
+        left: 0
+    }
+    .featuresContent{
+        @include flexRow();
+        button{
+            display: block;
+            border: 0;
+            background-color: $accent-400;
+            border-radius: 5px;
+            padding: 0.5em 1em;
+            
+            a{
+                color: $primary-900;
+                text-decoration: none;
+                font-size: clamp(0.5rem, 1.5vw, 1rem);
+            }
+        }
+    }
+    .featuresImage{
+        @include mg-inl();
+       
+    }
+    .featuresImageWrapper{
+        width: 50%;
+    }
+    .feature{
+    
+        h2{
+            font-size: clamp(1rem, 3vw, 2rem)
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 1vw, 1.5rem);
+            max-width: 35ch;
+        }
+    }
+    .featuresText{
+        margin-inline: auto;
+        text-align: left
+    }
+}
+
+///////////////////////////////BROWSERS//////////////////////
+
+.browsersSection{
+    @include flexCol();
+    text-align: center;
+}
+
+.browsersIntro{
+    h2{
+        font-size: clamp(1rem, 7vw, 2rem);
+        font-weight:400;
+    }
+    p{
+        font-size: clamp(0.5rem, 3vw, 1rem);
+        color: $primary-500;
+    }
+}
+.browserCard{
+    @include flexCol();
+    @include mg-inl();
+    box-shadow: 0px 10px 10px 2px rgba($accent-400, 0.1);
+    margin-block:2rem;
+    width: 80%;
+    border-radius: 15px
+}
+
+.cardTop{
+    @include flexCol();
+    padding-block: 2rem;
+    border-bottom: 4px dotted rgba($primary-500 , $alpha: .5);
+    img{
+        width: 40%;
+        @include mg-inl();
+        margin-block: 1rem;
+    }
+    h3{
+        font-size: clamp(1rem, 6vw, 2rem);
+        font-weight: 400;
+    }
+    h4{
+        font-size: clamp(0.7rem, 4vw, 2rem);
+        color: $primary-500;
+        font-weight: 400;
+    }
+}
+
+.cardBottom{
+    padding-block: 1rem;
+    button{
+        margin-block: auto;
+        border: 0;
+        border-radius: 5px;
+        background-color: $accent-400;
+        padding: 0.5em 2em;
+        a{
+            text-decoration: none;
+            color: $primary-900;
+            font-size: clamp(0.7rem, 3vw, 2rem );
+        }
+    }
+}
+
+@media only screen and (min-width:450px) and (max-width:700px){
+    .browsersIntro{
+        h2{
+            font-size: clamp(1rem, 6vw, 2rem);
+
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 3vw, 1rem);
+            max-width:35ch;
+        }
+    }
+
+    .browserCard{
+        width: 50vw;
+    }
+    .cardTop{
+        h3{
+            font-size: clamp(1rem, 4vw, 1.7rem)
+        }
+        h4{
+            font-size: clamp(1rem, 3vw, 1.5rem)
+        }
+    }
+}
+
+@media only screen and (min-width:700px) and (max-width:1024px){
+    .browsersIntro{
+        h2{
+            font-size: clamp(1rem, 5vw, 3rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(1rem, 2.5vw, 2rem);
+            max-width:35ch;
+        }
+    }
+    .browserCard{
+        width: 50vw;
+    }
+    .cardTop{
+        h3{
+            font-size: clamp(1rem, 4vw, 1.7rem)
+        }
+        h4{
+            font-size: clamp(1rem, 2.5vw, 1.5rem)
+        }
+    }
+    .cardBottom{
+        button{
+            a{
+                font-size: clamp(1rem, 2.5vw, 2.5rem)
+            }
+            
+        }
+    }
+}
+@media only screen and (min-width:1024px) and (max-width:1440px){
+    .browsersIntro{
+        h2{
+            font-size: clamp(1rem, 3vw, 3rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+            max-width:35ch;
+        }
+    }
+    .browserCardWrapper{
+        @include flexRow();
+        min-height: 500px;
+    }
+    .browserCard{
+        width: 30%;
+        height: 66%;
+    }
+    .browserCard:nth-of-type(1){
+        margin-bottom: auto;
+    }
+    .browserCard:nth-of-type(2){
+        margin-block: auto;
+    }
+    .browserCard:nth-of-type(3){
+        margin-top: auto;
+    }
+    .cardTop{
+        h3{
+            font-size: clamp(0.5rem, 2.5vw, 2rem)
+        }
+        h4{
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem)
+        }
+    }
+    .cardBottom{
+        button{
+            &:hover,
+            &:focus-within{
+                
+                outline: 2px solid $accent-400;
+                background-color: $primary-900;
+                cursor: pointer;
+                a{
+                    color: $accent-400;
+                }
+            }
+            a{
+                font-size: clamp(0.5rem, 1.5vw, 1.5rem)
+            }
+            
+        }
+    }
+}
+@media only screen and (min-width:1440px){
+    .browsersIntro{
+        h2{
+            font-size: clamp(1rem, 3vw, 3rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+            max-width:35ch;
+        }
+    }
+    .browserCardWrapper{
+        @include flexRow();
+        min-height: 500px;
+    }
+    .browserCard{
+        width: 25%;
+        height: 66%;
+        margin-block: 0;
+    }
+    .browserCard:nth-of-type(1){
+        margin-bottom: auto;
+    }
+    .browserCard:nth-of-type(2){
+        margin-block: auto;
+    }
+    .browserCard:nth-of-type(3){
+        margin-top: auto;
+    }
+    .cardTop{
+        h3{
+            font-size: clamp(0.5rem, 2vw, 2rem)
+        }
+        h4{
+            font-size: clamp(0.5rem, 1vw, 1.5rem)
+        }
+    }
+    .cardBottom{
+        button{
+            &:hover,
+            &:focus-within{
+                
+                outline: 2px solid $accent-400;
+                background-color: $primary-900;
+                cursor: pointer;
+                a{
+                    color: $accent-400;
+                }
+            }
+            a{
+                font-size: clamp(0.5rem, 1vw, 1.5rem)
+            }
+            
+        }
+    }
+}
+///////////////////////////////FAQ////////////////////
+
+.FAQSection{
+    @include flexCol();
+    text-align: center;
+    padding-block: 5rem;
+}
+
+
+
+.faqIntro{
+    padding-block-end: 2rem;
+    h2{
+        font-size: clamp(1rem, 7vw, 2rem);
+        font-weight: 400;
+    }
+    p{
+        font-size: clamp(0.7rem, 4vw, 2rem);
+        color: $primary-500;
+        line-height: 2;
+    }
+}
+
+.faqContent{
+    @include flexCol();
+}
+.faqTile{
+    @include flexCol();
+    height: fit-content
+}
+.question{
+    @include flexRow();
+    padding-block: 1rem;
+    border-bottom: 1px solid rgba($primary-500 , $alpha: .5);
+    &:hover,
+    &:focus-within{
+        cursor: pointer;
+        h3{
+            color: $accent-500;
+
+        }
+    }
+    img{
+        object-fit: scale-down;
+        margin-left: auto;
+        
+    }
+    h3{
+        text-align: left;
+        font-weight: 400;
+        font-size: clamp(0.7rem, 4.5vw, 2rem);
+    }
+}
+
+.answer{
+    
+    text-align: left;
+    color: $primary-500;
+    font-size: clamp(0.7rem, 4.5vw, 2rem);
+    line-height: 2;
+    padding-block: 2rem;
+    transition: 500ms ease-in;
+}
+.hiddenAnswer{
+    transform: scaleY(0) ;
+    display:none;
+    transition: 500ms ease-in;
+}
+.moreInfoButton{
+    @include mg-inl();
+    border: 0;
+    background-color: $accent-400;
+    border-radius:5px ;
+    width: fit-content;
+    margin-top: 2rem;
+    padding: 0.5em 1em ;
+    a{
+        color: $primary-900;
+        text-decoration: none;
+    }
+}
+
+@media only screen and (min-width:450px) and (max-width:700px){
+    .faqIntro{
+        h2{
+            font-size: clamp(1rem, 6vw, 2rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 3vw, 1rem);
+            max-width:35ch;
+        }   
+    }
+
+    .question{
+        h3{
+            font-size: clamp(0.5rem, 3vw, 1.5rem); 
+        }
+    }
+    .answer{
+        p{
+            font-size: clamp(0.5rem, 3vw, 1rem); 
+        }
+    }
+
+    .moreInfoButton{
+        font-size: clamp(0.5rem, 3vw, 1.5rem);
+    }
+}
+@media only screen and (min-width:700px) and (max-width:1024px){
+    .faqIntro{
+        h2{
+            font-size: clamp(1rem, 4vw, 3rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(1rem, 2.5vw, 2rem);
+            max-width:35ch;
+        }   
+    }
+    .question{
+        h3{
+            font-size: clamp(1rem, 2.5vw, 2rem); 
+        }
+    }
+    .answer{
+        p{
+            font-size: clamp(1rem, 2vw, 2rem); 
+        }
+    }
+    .moreInfoButton{
+        font-size: clamp(0.5rem, 3vw, 1.5rem);
+    }
+}
+@media only screen and (min-width:1024px) and (max-width:1440px){
+    .faqIntro{
+        h2{
+            font-size: clamp(1rem, 3vw, 3rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+            max-width:35ch;
+        }   
+    }
+    .faqContent{
+        margin-inline: auto;
+        width: 950px;
+        
+    }
+    .question{
+        h3{
+            font-size: clamp(1rem, 2vw, 1.5rem); 
+        }
+    }
+    .answer{
+        p{
+            font-size: clamp(1rem, 1.5vw, 1.5rem); 
+        }
+    }
+    .moreInfoButton{
+        font-size: clamp(0.5rem, 3vw, 1.5rem);
+    }
+
+}
+
+@media only screen and (min-width:1440px){
+    .faqIntro{
+        h2{
+            font-size: clamp(1rem, 3vw, 3rem);
+            padding-block: 1rem;
+        }
+        p{
+            @include mg-inl();
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+            max-width:35ch;
+        }   
+    }
+    .faqContent{
+        margin-inline: auto;
+        width: 950px;
+        
+    }
+    .question{
+        h3{
+            font-size: clamp(1rem, 2vw, 1.5rem); 
+        }
+    }
+    .answer{
+        p{
+            font-size: clamp(0.5rem, 1.2vw, 1.2rem); 
+        }
+    }
+    .moreInfoButton{
+        font-size: clamp(0.5rem, 3vw, 1.5rem);
+    }
+
+}
+////////////////////////FOOTER///////////////////////////\
+
+footer{
+    margin-inline: 0;
+    background-color: $accent-400;
+}
+
+
+
+.footerTop{
+    color: $primary-900;
+    @include flexCol();
+    text-align: center;
+    padding-block-start: 3rem;
+    padding-block-end: 1rem;
+    align-items: center;
+    gap: 1rem;
+    h4{
+        font-weight: 400;
+        font-size: clamp(0.7rem, 4vw, 2rem);
+        width: 80%;
+    }
+    h3{
+        font-weight: 400;
+        font-size: clamp(1rem, 6vw, 2rem);
+        width: 80%;
+    }
+}
+
+.inputWrapper{
+    @include flexCol();
+    justify-content: center;
+    width: 80%;
+    gap: 1rem;
+    input{
+        border: 0;
+        border-radius: 5px;
+        padding: 0.5em 3em;
+        font-size: clamp(0.7rem, 4vw, 2rem);
+    }
+    input:invalid{
+        border: 1px solid $accent-500;
+        background-color: $primary-900;
+        background: url(images/icon-error.svg) no-repeat;
+        background-position: 95% center;
+    }
+    button{
+        
+        background-color: $accent-500;
+        color: $primary-900;
+        border: 0;
+        padding: 0.5em 2em;
+        border-radius: 5px;
+        font-size: clamp(0.7rem, 4vw, 2rem);
+    }
+}
+
+.footerBottom{
+    background-color: $primary-400;
+    padding-block: 3rem
+}
+
+.footerNav{
+    @include mg-inl();
+    ul{
+        @include flexCol();
+        list-style: none;
+        padding-block: 0;
+        padding-inline-start: 0;
+        margin-block: 0;
+        justify-content: center;
+        gap: 1rem;
+        padding-block: 2rem;
+        li{
+            text-align: center;
+            a{
+                color: $primary-500;
+                text-decoration: none;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.footerBottomLeft{
+    @include flexCol();
+    justify-content: center;
+    svg{
+       @include mg-inl();
+    }
+}
+
+
+.footerBottomRight{
+    @include flexRow();
+    @include mg-inl();
+    gap: 2rem;
+    justify-content: center;
+    img{
+        object-fit: scale-down;
+        width: fit-content;
+       
+    }
+}
+
+
+@media only screen and (min-width:450px) and (max-width:700px){
+    .footerTop{
+        h4{
+            font-size: clamp(0.9rem, 3vw, 2rem);
+        }
+        h3{
+            font-size: clamp(1rem, 5vw, 2rem);
+        }
+        form{
+            input{
+               
+                font-size: clamp(1rem, 3vw, 1.5rem);
+            }
+            button{
+                font-size: clamp(1rem, 3vw, 1.5rem);
+            }
+        }
+    }
+    .logoBottom{
+       object-fit: contain;
+    }
+    .footerNav{
+        a{
+            font-size: clamp(1rem, 3vw, 1.5rem);
+        }
+    }
+
+
+}
+
+@media only screen and (min-width:700px) and (max-width:1024px){
+    .footerTop{
+        h4{
+            font-size: clamp(1rem, 2vw, 2rem);
+        }
+        h3{
+            font-size: clamp(1rem, 5vw, 2rem);
+        }
+        form{
+            @include flexRow();
+            input{
+               
+                font-size: clamp(1rem, 3vw, 1.5rem);
+            }
+            button{
+                font-size: clamp(1rem, 3vw, 1.5rem);
+            }
+        }
+    }
+    .logoBottom{
+        object-fit: contain;
+     }
+     .footerNav{
+         a{
+             font-size: clamp(1rem, 3vw, 1.5rem);
+         }
+     }
+     
+}
+@media only screen and (min-width:1024px) and (max-width:1440px){
+    .footerTop{
+        padding-inline: 30vw;
+        h4{
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+        }
+        h3{
+            font-size: clamp(1rem, 2vw, 3rem);
+        }
+        form{
+            @include flexRow();
+            width: 100%;
+            input, button{
+                padding: .5em 2em;
+                font-size: clamp(1rem, 1.5vw, 1.5rem);
+                width: fit-content;
+                height: fit-content;
+            }
+            
+        }
+    }
+    .footerBottom{
+        @include flexRow();
+        padding: 0;
+        padding-inline: 10vw;
+    }
+    .footerBottomLeft{
+        @include flexRow()
+    }
+    .logoBottom{
+        @include mg-blk();
+        object-fit: contain;
+       
+     }
+     .footerNav{
+        ul{
+            @include flexRow();
+            margin-left: 3rem;
+            li{
+                
+                a{
+                    font-size: clamp(0.5rem, 1.2vw, 1.5rem);
+                    color: rgba($primary-900, 0.7);
+                    font-weight: 400;
+                    margin-inline: 1rem;
+                    &:hover,
+                    &:focus-within{
+                        color: $accent-500 ;
+                    }
+                }
+            }
+            
+        }
+         
+     }
+
+     .footerBottomRight{
+        margin-inline: 0;
+        margin-left: auto;
+        a{
+            @include mg-blk();
+        }
+     }
+     
+}
+
+@media only screen and (min-width:1440px){
+    .footerTop{
+        padding-inline: 30vw;
+        h4{
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+        }
+        h3{
+            font-size: clamp(1rem, 2vw, 3rem);
+        }
+        form{
+            @include flexRow();
+            width: 100%;
+            input, button{
+                padding: .5em 2em;
+                font-size: clamp(1rem, 1.5vw, 1.5rem);
+                width: fit-content;
+                height: fit-content;
+            }
+            
+        }
+    }
+    .footerBottom{
+        @include flexRow();
+        padding: 0;
+        padding-inline: 10vw;
+    }
+    .footerBottomLeft{
+        @include flexRow()
+    }
+    .logoBottom{
+        @include mg-blk();
+        object-fit: contain;
+       
+     }
+     .footerNav{
+        ul{
+            @include flexRow();
+            margin-left: 3rem;
+            li{
+                
+                a{
+                    font-size: clamp(0.5rem, 1.2vw, 1.5rem);
+                    color: rgba($primary-900, 0.7);
+                    font-weight: 400;
+                    margin-inline: 1rem;
+                    &:hover,
+                    &:focus-within{
+                        color: $accent-500 ;
+                    }
+                }
+            }
+            
+        }
+         
+     }
+
+     .footerBottomRight{
+        margin-inline: 0;
+        margin-left: auto;
+        a{
+            @include mg-blk();
+        }
+     }
+
+
+
+
+}
